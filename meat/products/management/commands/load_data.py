@@ -1,7 +1,7 @@
-import os
 import time
 
 import requests
+from django.conf import settings
 from django.core.management import BaseCommand
 
 from products.models import Category, Product
@@ -23,32 +23,30 @@ def get_data(group_id):
     headers = {
         'accept': 'application/json, text/plain, */*',
         'accept-language': 'ru,en;q=0.9,zh;q=0.8,uk;q=0.7',
-        'authorization': f'Bearer {os.getenv("API_TOKEN")}',
+        'authorization': f'Bearer {settings.API_TOKEN}',
         'dnt': '1',
-        'origin': 'https://cloud.sigma.ru',
+        'origin': settings.MAIN_URL,
         'priority': 'u=1, i',
-        'referer': 'https://cloud.sigma.ru/',
+        'referer': settings.MAIN_URL,
         'sec-ch-ua': '"Not/A)Brand";v="8", "Chromium";v="126"',
         'sec-ch-ua-mobile': '?0',
         'sec-ch-ua-platform': '"Windows"',
         'sec-fetch-dest': 'empty',
         'sec-fetch-mode': 'cors',
         'sec-fetch-site': 'same-site',
-        'user-agent': ('Mozilla/5.0 (Windows NT 10.0; Win64; x64) '
-                       'AppleWebKit/537.36 (KHTML, like Gecko) '
-                       'Chrome/126.0.0.0 Safari/537.36'),
+        'user-agent': settings.USER_AGENT,
     }
 
     params = {
         'page': '0',
         'size': '50',
-        'menuId': '4c4b52f2-7273-4778-96f7-a23f862d3acc',
+        'menuId': settings.MENU_ID,
         'groupId': group_id,
         'sort': 'createdDate,desc',
     }
     try:
         response = requests.get(
-            os.getenv('API_URL'),
+            settings.API_URL,
             params=params,
             headers=headers,
         )
