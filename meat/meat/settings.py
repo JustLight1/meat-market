@@ -131,3 +131,9 @@ STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+API_TOKEN = os.getenv("API_TOKEN")
+API_URL = os.getenv('API_URL')
+MAIN_URL = os.getenv('MAIN_URL')
+USER_AGENT = os.getenv('USER_AGENT')
+MENU_ID = os.getenv('MENU_ID')
