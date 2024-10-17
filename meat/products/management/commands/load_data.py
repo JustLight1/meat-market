@@ -112,7 +112,8 @@ class Command(BaseCommand):
                     )
                 else:
                     print(
-                        f'Новых товаров в категории *{group_name}*, не появилось'
+                        f'Новых товаров в категории *{group_name}*, не '
+                        'появилось'
                     )
 
                 if updated_products:
