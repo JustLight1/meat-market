@@ -80,8 +80,8 @@ class Command(BaseCommand):
                 )
 
                 existing_products = {
-                    product.name: product for product in Product.objects.filter
-                    (category=category)
+                    product.name: product for product in
+                    Product.objects.filter(category=category)
                 }
 
                 new_products = []
