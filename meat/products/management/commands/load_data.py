@@ -3,12 +3,9 @@ import time
 
 import requests
 from django.core.management import BaseCommand
-from dotenv import load_dotenv
 
 from products.models import Category, Product
 
-
-load_dotenv()
 
 categories_id = {
     67903: 'Баранина',
