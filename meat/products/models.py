@@ -25,7 +25,11 @@ class Product(models.Model):
         related_name='products',
         verbose_name='Категория'
     )
-    price = models.DecimalField(max_digits=10, decimal_places=2)
+    price = models.DecimalField(
+        max_digits=10,
+        decimal_places=2,
+        verbose_name='Цена руб'
+    )
     description = models.TextField(verbose_name='Описание')
     image = models.ImageField(
         'Изображение',
