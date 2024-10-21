@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% block title %}
+Продукция | Мясной магазин {{ title }}
+{% endblock %}
+<body>
+
+    <main class="container py-4">
+        {% block content %}
+        <section class="catalog">
+            <h2 class="text-center mb-4">Каталог товаров</h2>
+            <div class="category-select d-flex justify-content-center flex-wrap mb-4">
+                {% for category in categories %}
+                <a href="{% url 'products:product_list' category.id %}"
+                    class="btn btn-dark m-1 {% if active_category_id == category.id %}active-category{% endif %}">
+                    {{ category.name }}
+                </a>
+                {% endfor %}
+            </div>
+
+            <div class="product-grid">
+                {% for category_info in categories_with_products %}
+                <div class="category-header text-center mb-4 mt-4">
+                    <h3>{{category_info.smile}} {{ category_info.category.name }}</h3>
+                </div>
+                <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+                    {% for product in category_info.products %}
+                    <div class="col">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <h5 class="card-title">{{category_info.smile}} {{ product.name }}</h5>
+                                <p class="card-text">{{ product.description }}</p>
+                                {% if product.image %}
+                                <img src="{{ product.image.url }}" alt="{{ product.name }}"
+                                    class="card-img-top img-fluid">
+                                {% endif %}
+                                <p class="card-price">Цена: {{ product.price }} ₽/кг</p>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                {% endfor %}
+            </div>
+        </section>
+        {% endblock %}
+    </main>
+</body>

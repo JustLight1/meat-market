@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block title %}
+Сообщение отправлено | Мясной магазин {{ title }}
+{% endblock %}
+<body>
+    <main class="container py-4">
+        {% block content %}
+        <div class="success-container">
+            <div class="success-icon">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <div class="success-message">Сообщение успешно отправлено!</div>
+            <div class="success-description">
+                Спасибо за ваше сообщение! Мы получили его и обязательно ознакомимся с содержимым.
+            </div>
+            <a href="{% url 'products:index' %}" class="back-home">Вернуться на главную</a>
+        </div>
+        {% endblock %}
+    </main>
+</body>

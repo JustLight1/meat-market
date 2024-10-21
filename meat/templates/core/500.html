@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+Ошибка 500 | Мясной магазин {{ title }}
+{% endblock %}
+<body>
+    <main class="container py-4">
+        {% block content %}
+        <div class="error-container">
+            <div class="error-code">500</div>
+            <div class="error-message">Внутренняя ошибка сервера</div>
+            <img src="{% static 'img/500.webp' %}" alt="Ошибка" class="error-image">
+            <div class="error-description">
+                Ой! Кажется, наш мясной комбайн временно сломался. Мы уже отправили нашего лучшего мясника чинить его.
+                Пожалуйста, попробуйте перезагрузить страницу или вернитесь чуть позже. Приносим извинения за
+                неудобства!
+            </div>
+            <a href="{% url 'products:index' %}" class="back-home">Вернуться на главную</a>
+        </div>
+        {% endblock %}
+    </main>
+</body>

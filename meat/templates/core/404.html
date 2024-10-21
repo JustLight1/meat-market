@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+Ошибка 404 | Мясной магазин {{ title }}
+{% endblock %}
+<body>
+    <main class="container py-4">
+        {% block content %}
+        <div class="error-container">
+            <div class="error-code">404</div>
+            <div class="error-message">Страница не найдена</div>
+            <img src="{% static 'img/404.webp' %}" alt="Лупа" class="error-image">
+            <div class="error-description">
+                Упс! Кажется, мы не смогли найти страницу, которую вы искали. Возможно, она была перемещена или удалена.
+                Не волнуйтесь, у нас ещё много вкусного мяса в других разделах!
+            </div>
+            <a href="{% url 'products:index' %}" class="back-home">Вернуться на главную</a>
+        </div>
+        {% endblock %}
+    </main>
+</body>

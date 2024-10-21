@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+Контакты | Мясной магазин {{ title }}
+{% endblock %}
+<body>
+    <main>
+        {% block content %}
+        <h2>Контакты</h2>
+        <div class="contact-info">
+            <img src="{% static 'img/contacts.webp' %}" alt="Магазин" width="600" height="400">
+            <div class="info-text">
+                <h3>Мясной Магазин "Мясо"</h3>
+                <p><i class="fas fa-map-marker-alt"></i> Адрес: г. Краснодар, ул. Красных Партизан 25</p>
+                <p><i class="fas fa-phone"></i> Телефон: +7 (952) 857-95-50</p>
+                <p><i class="fas fa-envelope"></i> Email: myasnoymagazinkrd@gmail.com</p>
+                <h4>Часы работы:</h4>
+                <p>Пн-Вс: 10:00 - 21:00</p>
+                <h4>Как добраться:</h4>
+                <p>Мы находимся в 5 минутах ходьбы от остановки общественного транспорта <b>"Заполярная"</b>. К нам
+                    можно добраться на <b>автобусах</b> № 105, 120, 140, 155, 710, <b>маршрутках</b> № 420, 347, 5 и
+                    <b>троллейбусе</b> № 4. Выйдя на остановке, идите прямо в сторону многоэтажных домов. Наш магазин
+                    расположен на правой стороне улицы, в проулке возле
+                    пятерочки.
+                </p>
+            </div>
+        </div>
+        <section class="map-container">
+            <div id="map" style="width: 100%; height: 100%;">
+                <h2>Как нас найти</h2>
+                <iframe src="https://yandex.ru/map-widget/v1/?z=12&ol=biz&oid=31696323174" frameborder="0"></iframe>
+            </div>
+        </section>
+        <div class="contact-form">
+            <h3>Форма обратной связи</h3>
+            <form method="post" id="feedback-form" action="{% url 'products:contacts' %}">
+                {% csrf_token %}
+                {{form.as_p}}
+                <button type="submit">Отправить</button>
+            </form>
+        </div>
+        {% endblock %}
+    </main>
+</body>

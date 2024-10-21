@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+Ошибка 403 CSRF | Мясной магазин {{ title }}
+{% endblock %}
+<body>
+    <main class="container py-4">
+        {% block content %}
+        <div class="error-container">
+            <div class="error-code">403 CSRF</div>
+            <div class="error-message">Ошибка проверки CSRF</div>
+            <img src="{% static 'img/403csrf.webp' %}" alt="CSRF Ошибка" class="error-image">
+            <div class="error-description">
+                Упс! Кажется, наша система безопасности обнаружила что-то подозрительное. Это как если бы кто-то
+                попытался украсть кусок нашего фирменного стейка! Мы не можем обработать ваш запрос из-за отсутствия или
+                недействительного CSRF-токена. Пожалуйста, попробуйте перезагрузить страницу или очистить кеш браузера.
+            </div>
+            <a href="{% url 'products:index' %}" class="back-home">Вернуться на главную</a>
+        </div>
+        {% endblock %}
+    </main>
+</body>
