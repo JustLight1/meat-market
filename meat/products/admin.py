@@ -15,3 +15,4 @@ class ProductAdmin(admin.ModelAdmin):
     search_fields = ('id', 'name')
     list_editable = ('category',)
     autocomplete_fields = ('category',)
+    list_filter = ('category',)
