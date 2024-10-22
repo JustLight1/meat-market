@@ -6,10 +6,10 @@ from products.models import Category, Product
 from products.forms import FeedbackForm
 
 SMILES = {
-    settings.PORK: '🐷',
     settings.SHEEPMEAT: '🐑',
     settings.BEEF: '🥩',
     settings.CHICKEN: '🍗',
+    settings.PORK: '🐷',
     settings.MINCED_MEAT: '🥩',
     settings.MARINADES: '🥩',
     settings.POLUFABRIKATY: '🥟',
