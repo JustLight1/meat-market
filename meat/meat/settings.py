@@ -171,3 +171,10 @@ KOPCHENIYA = 9
 MANGAL = 10
 MILK = 11
 WATER = 12
+
+
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
+    }
+}
