@@ -1,9 +1,10 @@
-from django.shortcuts import render, get_object_or_404, redirect
-from django.core.mail import send_mail
 from django.conf import settings
+from django.core.mail import send_mail
+from django.shortcuts import get_object_or_404, redirect, render
+from django.views.decorators.cache import cache_page
 
-from products.models import Category, Product
 from products.forms import FeedbackForm
+from products.models import Category, Product
 
 SMILES = {
     settings.SHEEPMEAT: '🐑',
@@ -25,6 +26,7 @@ def index(request):
     return render(request, 'base.html')
 
 
+@cache_page(60 * 15)
 def category_list(request):
     categories = Category.objects.prefetch_related('products').all()
     categories_with_products = []
@@ -45,6 +47,7 @@ def category_list(request):
     return render(request, 'products/index.html', context)
 
 
+@cache_page(60 * 15)
 def product_list(request, category_id):
     category = get_object_or_404(Category, id=category_id)
     products = Product.objects.filter(category=category)
