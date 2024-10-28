@@ -18,7 +18,6 @@ SMILES = {
     settings.KOPCHENIYA: '🍖',
     settings.MANGAL: '🍢',
     settings.MILK: '🥛',
-    settings.WATER: '🥤'
 }
 
 
